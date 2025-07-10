@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <!-- Meta tags for character encoding and responsive viewport -->
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- Page title -->
+  <title>Age Calculator App</title>
+
+  <!-- CSS stylesheets -->
+  <link rel="stylesheet" href="./src/styles/style.css">
+  <link rel="stylesheet" href="./src/styles/responsive.css">
+</head>
+
+<body>
+  <!-- Main content container -->
+  <main class="age-calculator">
+    <!-- Age calculation form -->
+    <form id="age-form" novalidate> <!-- novalidate prevents browser validation -->
+      <div class="input-fields">
+        <!-- Day input group -->
+        <div class="input-group">
+          <label for="day">DAY</label>
+          <input type="number" id="day" name="day" placeholder="DD" aria-describedby="day-error">
+          <span id="day-error" class="error-message" aria-live="polite"></span>
+        </div>
+
+        <!-- Month input group -->
+        <div class="input-group">
+          <label for="month">MONTH</label>
+          <input type="number" id="month" name="month" placeholder="MM" aria-describedby="month-error">
+          <span id="month-error" class="error-message" aria-live="polite"></span>
+        </div>
+
+        <!-- Year input group -->
+        <div class="input-group">
+          <label for="year">YEAR</label>
+          <input type="number" id="year" name="year" placeholder="YYYY" aria-describedby="year-error">
+          <span id="year-error" class="error-message" aria-live="polite"></span>
+        </div>
+      </div>
+
+      <!-- Submit button section -->
+      <div class="submit-section">
+        <button type="submit" class="calculate-btn" aria-label="Calculate age">
+          <img src="./src/assets/images/icon-arrow.svg" alt="">
+        </button>
+      </div>
+    </form>
+
+    <!-- Results display section -->
+    <div class="result-display" aria-live="polite">
+      <div class="result-item">
+        <span class="result-number" id="years-result">--</span>
+        <span class="result-label">years</span>
+      </div>
+
+      <div class="result-item">
+        <span class="result-number" id="months-result">--</span>
+        <span class="result-label">months</span>
+      </div>
+
+      <div class="result-item">
+        <span class="result-number" id="days-result">--</span>
+        <span class="result-label">days</span>
+      </div>
+    </div>
+  </main>
+
+  <!-- JavaScript file -->
+  <script src="./src/assets/js/script.js"></script>
+</body>
+
+</html>

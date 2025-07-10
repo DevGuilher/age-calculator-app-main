@@ -1,0 +1,211 @@
+/* CSS Variables for consistent theming */
+:root {
+    /* Primary colors */
+    --purple: hsl(259, 100%, 65%);
+    --light-red: hsl(0, 100%, 67%);
+
+    /* Neutral colors */
+    --white: hsl(0, 100%, 100%);
+    --off-white: hsl(0, 0%, 94%);
+    --light-grey: hsl(0, 0%, 86%);
+    --smokey-grey: hsl(0, 1%, 44%);
+    --off-black: hsl(0, 0%, 9%);
+
+    /* Animation timings */
+    --transition-fast: 0.2s ease;
+    --transition-medium: 0.3s ease;
+    --transition-slow: 0.5s ease;
+}
+
+/* Base styles */
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: var(--off-white);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+    padding: 1rem;
+}
+
+/* Main calculator container */
+.age-calculator {
+    background-color: var(--white);
+    border-radius: 20px 20px 100px 20px;
+    padding: 3rem 2rem;
+    max-width: 600px;
+    width: 100%;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+}
+
+/* Input fields section */
+.input-fields {
+    display: flex;
+    width: 90%;
+    padding-bottom: 2rem;
+    border-bottom: 1px solid var(--light-grey);
+    position: relative;
+    gap: 1rem;
+}
+
+/* Individual input group styling */
+.input-group {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    position: relative;
+}
+
+/* Label styling */
+label {
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    color: var(--smokey-grey);
+    font-size: 0.75rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+}
+
+/* Input field styling */
+input {
+    padding: 0.8rem;
+    font-size: 1.5rem;
+    font-weight: 700;
+    border: 1px solid var(--light-grey);
+    border-radius: 8px;
+    width: 100%;
+    max-width: 100px;
+    transition: border-color var(--transition-medium),
+        transform var(--transition-fast);
+}
+
+input:focus {
+    outline: none;
+    border-color: var(--purple);
+}
+
+/* Disable native validation UI */
+input:invalid {
+    box-shadow: none;
+}
+
+input::-webkit-validation-bubble-message {
+    display: none;
+}
+
+/* Error message styling */
+.error-message {
+    color: var(--light-red);
+    font-size: 0.7rem;
+    font-style: italic;
+    margin-top: 0.5rem;
+    min-height: 20px;
+    display: none;
+    transform: translateY(-10px);
+    opacity: 0;
+    transition: transform var(--transition-medium),
+        opacity var(--transition-medium);
+    position: absolute;
+    bottom: -1.5rem;
+}
+
+/* Error state styles */
+.input-group.error label {
+    color: var(--light-red);
+}
+
+.input-group.error input {
+    animation: shake 0.5s ease-in-out;
+    border-color: var(--light-red);
+}
+
+.input-group.error .error-message {
+    display: block;
+    transform: translateY(0);
+    opacity: 1;
+}
+
+/* Shake animation for invalid inputs */
+@keyframes shake {
+
+    0%,
+    100% {
+        transform: translateX(0);
+    }
+
+    20%,
+    60% {
+        transform: translateX(-5px);
+    }
+
+    40%,
+    80% {
+        transform: translateX(5px);
+    }
+}
+
+/* Submit button section */
+.submit-section {
+    position: relative;
+    display: flex;
+    justify-content: flex-end;
+}
+
+/* Calculate button styling */
+.calculate-btn {
+    background-color: var(--purple);
+    border: none;
+    border-radius: 50%;
+    width: 70px;
+    height: 70px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    position: absolute;
+    top: -35px;
+    transition: background-color var(--transition-medium),
+        transform var(--transition-fast);
+}
+
+.calculate-btn:hover {
+    background-color: var(--off-black);
+    transform: scale(1.05);
+}
+
+.calculate-btn:active {
+    transform: scale(0.98);
+}
+
+.calculate-btn img {
+    width: 35px;
+}
+
+/* Results display styling */
+.result-display {
+    margin-top: 2rem;
+}
+
+.result-item {
+    font-size: 4.5rem;
+    font-weight: 900;
+    font-style: italic;
+    line-height: 1.1;
+}
+
+.result-number {
+    color: var(--purple);
+    margin-right: -3%;
+    transition: all var(--transition-slow) cubic-bezier(0.68, -0.55, 0.27, 1.55);
+    display: inline-block;
+}
+
+/* Animation for updated results */
+.result-number.updated {
+    transform: scale(1.1);
+}
+
+.result-label {
+    color: var(--off-black);
+}
