@@ -169,15 +169,18 @@ function handleFormSubmit(e) {
     const year = parseInt(yearStr);
     const currentYear = new Date().getFullYear();
 
-    // Validate month range
-    if (month < 1 || month > 12) {
-        showError('month', 'Must be a valid month (1-12)');
+    // Validate year range
+    if (year < 1900) {
+        showError('year', 'Year must be 1900 or later');
+        isValid = false;
+    } else if (year > currentYear) {
+        showError('year', 'Must be in the past');
         isValid = false;
     }
 
-    // Validate year is not in future
-    if (year > currentYear) {
-        showError('year', 'Must be in the past');
+    // Validate month range
+    if (month < 1 || month > 12) {
+        showError('month', 'Must be a valid month (1-12)');
         isValid = false;
     }
 
